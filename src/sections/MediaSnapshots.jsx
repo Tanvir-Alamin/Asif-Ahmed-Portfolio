@@ -13,6 +13,7 @@ import img11 from '../assets/media 11.jpeg';
 import img12 from '../assets/media 12.jpg';
 import img13 from '../assets/media 13.jpg';
 import img14 from '../assets/media 14.jpeg';
+import img15 from '../assets/media 15.jpg';
 import img16 from '../assets/media 16.jpg';
 import ImageLightbox from '../components/ImageLightbox';
 
@@ -20,21 +21,22 @@ import ImageLightbox from '../components/ImageLightbox';
 const heightClasses = ['h-48', 'h-64', 'h-80', 'h-56', 'h-72', 'h-64', 'h-80', 'h-48', 'h-64', 'h-72', 'h-56', 'h-80', 'h-64', 'h-48', 'h-72'];
 
 const mediaImages = [
-  { src: img1,  caption: 'National News Coverage' },
-  { src: img2,  caption: 'Media Interview' },
-  { src: img3,  caption: 'International Briefing' },
-  { src: img4,  caption: 'Public Keynote' },
-  { src: img5,  caption: 'Television Appearance' },
-  { src: img6,  caption: 'Diplomatic Dialogue' },
-  { src: img7,  caption: 'Media Engagement' },
-  { src: img8,  caption: 'Panel Discussion' },
-  { src: img9,  caption: 'Press Conference' },
+  { src: img1, caption: 'National News Coverage' },
+  { src: img2, caption: 'Shahid Uddin Chowdhury Anee' },
+  { src: img3, caption: 'Israfil Khosru' },
+  { src: img4, caption: 'Shahadat Hossain Mayor of Chittagong City Corporatio' },
+  { src: img5, caption: 'Signing a copy for a reader' },
+  { src: img6, caption: 'Sharing Thoughts' },
+  { src: img7, caption: 'Dhaka University' },
+  { src: img8, caption: 'Dhaka University' },
+  { src: img9, caption: 'Story of Komol' },
   { src: img10, caption: 'Featured Coverage' },
-  { src: img11, caption: 'On Location' },
-  { src: img12, caption: 'Official Visit' },
-  { src: img13, caption: 'Cultural Program' },
-  { src: img14, caption: 'Broadcast Feature' },
-  { src: img16, caption: 'Media Presence' },
+  { src: img11, caption: 'Gayeshwar Chandra Roy & Sayeed Al Noman' },
+  { src: img12, caption: 'Kingkor Ahsan' },
+  { src: img13, caption: 'At the book fair' },
+  { src: img14, caption: 'Komol Book Trailer at Star Cineplex' },
+  { src: img16, caption: 'Sayeed Al Noman' },
+  { src: img15, caption: 'DhakaFM 90.4' },
 ];
 
 const MediaSnapshots = () => {
