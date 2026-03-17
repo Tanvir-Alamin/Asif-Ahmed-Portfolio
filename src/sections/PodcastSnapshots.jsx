@@ -1,19 +1,28 @@
+import { useState, useCallback } from 'react';
 import img1 from '../assets/podcast 5.jpg';
 import img2 from '../assets/podcast 8.jpg';
 import img3 from '../assets/podcast.jpg';
 import img4 from '../assets/media 7.jpeg';
 import img5 from '../assets/media 8.jpeg';
 import img6 from '../assets/media 9.jpeg';
+import ImageLightbox from '../components/ImageLightbox';
 
 const PodcastSnapshots = () => {
   const snapshots = [
-    { id: 1, src: img1, label: 'Creative Podcast' },
-    { id: 2, src: img2, label: 'Creative Podcast' },
-    { id: 3, src: img3, label: 'Creative Podcast' },
-    { id: 4, src: img4, label: 'Creative Podcast' },
-    { id: 5, src: img5, label: 'Creative Podcast' },
-    { id: 6, src: img6, label: 'Creative Podcast' },
+    { src: img1, caption: 'Creative Podcast' },
+    { src: img2, caption: 'Creative Podcast' },
+    { src: img3, caption: 'Creative Podcast' },
+    { src: img4, caption: 'Creative Podcast' },
+    { src: img5, caption: 'Creative Podcast' },
+    { src: img6, caption: 'Creative Podcast' },
   ];
+
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const total = snapshots.length;
+
+  const onPrev = useCallback(() => setLightboxIndex((i) => (i - 1 + total) % total), [total]);
+  const onNext = useCallback(() => setLightboxIndex((i) => (i + 1) % total), [total]);
+  const onClose = useCallback(() => setLightboxIndex(null), []);
 
   return (
     <section id="podcast-snapshots" className="section-padding bg-gray-50">
@@ -24,29 +33,40 @@ const PodcastSnapshots = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {snapshots.map((shot) => (
-            <div 
-              key={shot.id} 
-              className="relative group h-56 w-full rounded-xl overflow-hidden bg-gray-200 border border-gray-100 shadow-sm transition-all duration-500 hover:shadow-xl"
+          {snapshots.map((shot, i) => (
+            <div
+              key={i}
+              className="relative group h-56 w-full rounded-xl overflow-hidden bg-gray-200 shadow-sm cursor-pointer transition-all duration-500 hover:shadow-xl"
+              onClick={() => setLightboxIndex(i)}
             >
-              <img 
-                src={shot.src} 
-                alt={shot.label}
+              <img
+                src={shot.src}
+                alt={shot.caption}
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
-              {/* Overlay label */}
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center justify-center backdrop-blur-[2px]">
                 <span className="text-white text-xs font-semibold uppercase tracking-widest border border-white/30 px-4 py-2 rounded-full">
-                  {shot.label}
+                  {shot.caption}
                 </span>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={snapshots}
+          currentIndex={lightboxIndex}
+          onClose={onClose}
+          onPrev={onPrev}
+          onNext={onNext}
+        />
+      )}
     </section>
   );
 };
 
 export default PodcastSnapshots;
+

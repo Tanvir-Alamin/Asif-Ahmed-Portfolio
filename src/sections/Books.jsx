@@ -1,24 +1,26 @@
 import { ArrowUpRight } from 'lucide-react';
-
+import komol from '../assets/Komol.jpg'
+import ZiaInInternational from '../assets/book 2.jpg'
 const Books = () => {
-  const featuredBook = {
+  const featuredBook = [{
     title: 'কমল (Komol)',
+    image: komol,
     description: 'Centered on the life of Shaheed President Ziaur Rahman, this novel has sparked new discussions among readers, exploring history and identity with depth.',
     status: 'Available Now',
-  };
+  }, {
+    title: 'Zia in International Media',
+    image: ZiaInInternational,
+    titleBengali: 'আন্তর্জাতিক গণমাধ্যমে জিয়া',
+    status: 'Latest Work',
+    description: 'A serious analytical exploration of how Shaheed President Ziaur Rahman was portrayed in global media outlets, reflecting his international stature and impact.',
+    tag: 'Analytical Work'
+  }]
 
   const upcomingBooks = [
-    { 
-      title: 'Zia in International Media', 
-      titleBengali: 'আন্তর্জাতিক গণমাধ্যমে জিয়া',
-      status: 'Latest Work', 
-      description: 'A serious analytical exploration of how Shaheed President Ziaur Rahman was portrayed in global media outlets, reflecting his international stature and impact.',
-      tag: 'Analytical Work'
-    },
-    { 
-      title: 'Upcoming Novel', 
-      status: 'Coming 2026', 
-      description: 'A new exploration of contemporary Bangladeshi society and the human condition.' 
+    {
+      title: 'Upcoming Novel',
+      status: 'Coming 2026',
+      description: 'A new exploration of contemporary Bangladeshi society and the human condition.'
     },
   ];
 
@@ -31,37 +33,38 @@ const Books = () => {
         </h2>
 
         {/* Featured Book */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
+        {featuredBook.map(book => <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center mb-24">
           <div className="aspect-[3/4] bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
             <div className="w-full h-full flex items-center justify-center">
-              <div className="text-center space-y-4">
+              <img className='w-full h-full object-cover' src={book.image} alt="" />
+              {/* <div className="text-center space-y-4">
                 <div className="w-24 h-32 mx-auto bg-gray-100 rounded-lg border border-gray-200 flex items-center justify-center">
                   <span className="text-2xl text-gray-300">📖</span>
                 </div>
                 <p className="text-sm text-gray-400">Book Cover</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
           <div className="space-y-6">
             <span className="inline-block text-xs text-gray-400 uppercase tracking-widest font-medium bg-gray-100 px-3 py-1 rounded-full">
-              {featuredBook.status}
+              {book.status}
             </span>
             <h3 className="text-3xl md:text-4xl font-semibold text-black tracking-tight">
-              {featuredBook.title}
+              {book.title}
             </h3>
             <p className="text-gray-600 font-light leading-relaxed text-base md:text-lg">
-              {featuredBook.description}
+              {book.description}
             </p>
             <button className="apple-button group">
               Learn more
               <ArrowUpRight size={16} className="ml-2 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </button>
           </div>
-        </div>
+        </div>)}
 
         {/* Upcoming Books */}
-        <div>
+        {/* <div>
           <h3 className="text-lg font-semibold text-black mb-8 tracking-tight">Upcoming</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {upcomingBooks.map((book, i) => (
@@ -92,7 +95,7 @@ const Books = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </section>
   );

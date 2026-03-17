@@ -1,3 +1,4 @@
+import { useState, useCallback } from 'react';
 import img1 from '../assets/media 1.jpg';
 import img2 from '../assets/media 2.jpg';
 import img3 from '../assets/media 3.jpg';
@@ -13,6 +14,7 @@ import img12 from '../assets/media 12.jpg';
 import img13 from '../assets/media 13.jpg';
 import img14 from '../assets/media 14.jpeg';
 import img16 from '../assets/media 16.jpg';
+import ImageLightbox from '../components/ImageLightbox';
 
 // Intentionally varied heights to create organic masonry rhythm
 const heightClasses = ['h-48', 'h-64', 'h-80', 'h-56', 'h-72', 'h-64', 'h-80', 'h-48', 'h-64', 'h-72', 'h-56', 'h-80', 'h-64', 'h-48', 'h-72'];
@@ -36,6 +38,13 @@ const mediaImages = [
 ];
 
 const MediaSnapshots = () => {
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+  const total = mediaImages.length;
+
+  const onPrev = useCallback(() => setLightboxIndex((i) => (i - 1 + total) % total), [total]);
+  const onNext = useCallback(() => setLightboxIndex((i) => (i + 1) % total), [total]);
+  const onClose = useCallback(() => setLightboxIndex(null), []);
+
   return (
     <section id="media-snapshots" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
@@ -49,7 +58,8 @@ const MediaSnapshots = () => {
           {mediaImages.map((item, i) => (
             <div
               key={i}
-              className={`break-inside-avoid mb-5 group relative overflow-hidden rounded-xl ${heightClasses[i % heightClasses.length]}`}
+              className={`break-inside-avoid mb-5 group relative overflow-hidden rounded-xl cursor-pointer ${heightClasses[i % heightClasses.length]}`}
+              onClick={() => setLightboxIndex(i)}
             >
               <img
                 src={item.src}
@@ -57,8 +67,8 @@ const MediaSnapshots = () => {
                 loading="lazy"
                 className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              {/* Subtle caption on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-4">
+              {/* Hover caption overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                 <p className="text-white text-xs font-medium uppercase tracking-widest">
                   {item.caption}
                 </p>
@@ -67,9 +77,18 @@ const MediaSnapshots = () => {
           ))}
         </div>
       </div>
+
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={mediaImages}
+          currentIndex={lightboxIndex}
+          onClose={onClose}
+          onPrev={onPrev}
+          onNext={onNext}
+        />
+      )}
     </section>
   );
 };
 
 export default MediaSnapshots;
-
