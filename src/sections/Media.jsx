@@ -26,8 +26,10 @@ const getThumbnail = (url) => {
 
 const Media = () => {
   const mediaItems = [
-    { title: "Interview Episode", link: "https://youtu.be/rru6JTETDNE" },
-    { title: "Creative Discussion", link: "https://youtu.be/VazAj3mBsTs" },
+    { title: '"কমল" এর লেখক আসিফ আহমদের সাথে আড্ডা', link: "https://youtu.be/rru6JTETDNE" },
+    { title: "শহীদ রাষ্ট্রপতি জিয়াউর রহমানকে নিয়ে উপন্যাস সম্পর্কে", link: "https://youtu.be/VazAj3mBsTs" },
+    { title: "সেনাশাসন স্বৈরতন্ত্রের দিকে গেলেও জিয়াউর রহমানের ব্যাপারটা ছিল সম্পূর্ণ ভিন্ন", link: "https://youtu.be/hG9RNjecG_Y?si=hm5agLNH8gJRVdz5" },
+    { title: "শেখ মুজিবের মত করে জিয়াউর রহমানকেও কি একইভাবে পোট্রেট করা উচিত হবে?", link: "https://youtu.be/tOS3Zr7REjA?si=N6Cf74PirCGjwlMr" },
     { title: "Podcast Conversation", link: "https://www.facebook.com/share/v/1GJNn6HBJj/" },
     { title: "Public Talk", link: "https://www.facebook.com/share/v/1CgZAaUJJR/" },
     { title: "Media Appearance", link: "https://www.facebook.com/share/v/18jKmBcn57/" },

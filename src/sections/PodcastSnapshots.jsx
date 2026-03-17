@@ -6,6 +6,7 @@ import img3 from '../assets/podcast.jpg';
 import img4 from '../assets/podcast 3.jpg';
 import img5 from '../assets/podcast 2.jpg';
 import img6 from '../assets/podcast 1.jpg';
+import podcastLogo from '../assets/creativePodcast.png';
 import ImageLightbox from '../components/ImageLightbox';
 
 const allSnapshots = [
@@ -66,9 +67,7 @@ const CreativePodcast = () => {
           {/* Right — Editorial Content */}
           <div className="space-y-8">
             <div className="space-y-3">
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
-                Creative<br />Podcast
-              </h2>
+              <img src={podcastLogo} alt="Creative Podcast" className="w-56 md:w-64 lg:w-72 object-contain filter invert opacity-90" />
               <p className="text-white/50 text-base md:text-lg font-light leading-relaxed max-w-sm">
                 Where stories, analysis, and perspectives come together.
               </p>
@@ -87,16 +86,26 @@ const CreativePodcast = () => {
               ))}
             </div>
 
-            {/* CTA */}
-            <a
-              href="https://www.facebook.com/CreativePodcastofficial"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black text-sm font-semibold rounded-full hover:bg-white/90 transition-colors duration-300"
-            >
-              Watch on Facebook
-              <ExternalLink size={14} />
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 mt-6">
+              <a
+                href="https://www.youtube.com/@creativepodcastofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-full hover:bg-red-700 transition-colors duration-300"
+              >
+                Watch on YouTube
+                <ExternalLink size={14} />
+              </a>
+              <a
+                href="https://www.facebook.com/CreativePodcastofficial"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white text-sm font-semibold rounded-full hover:bg-blue-700 transition-colors duration-300"
+              >
+                Watch on Facebook
+                <ExternalLink size={14} />
+              </a>
+            </div>
           </div>
         </div>
 

@@ -2,8 +2,9 @@ import Hero from '../sections/Hero';
 import About from '../sections/About';
 import CreativePodcast from '../sections/PodcastSnapshots';
 import Books from '../sections/Books';
+import Media from '../sections/Media';
 import MediaSnapshots from '../sections/MediaSnapshots';
-import Articles from '../sections/Articles';
+import InTheNews from '../sections/InTheNews';
 import Contact from '../sections/Contact';
 
 const Home = () => {
@@ -13,11 +14,13 @@ const Home = () => {
       <CreativePodcast />
       <About />
       <Books />
+      <Media />
       <MediaSnapshots />
-      <Articles />
+      <InTheNews />
       <Contact />
     </>
   );
 };
 
 export default Home;
+

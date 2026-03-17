@@ -21,7 +21,7 @@ import ImageLightbox from '../components/ImageLightbox';
 const heightClasses = ['h-48', 'h-64', 'h-80', 'h-56', 'h-72', 'h-64', 'h-80', 'h-48', 'h-64', 'h-72', 'h-56', 'h-80', 'h-64', 'h-48', 'h-72'];
 
 const mediaImages = [
-  { src: img1, caption: 'National News Coverage' },
+  { src: img1, caption: 'Gayeshwar Chandra Roy' },
   { src: img2, caption: 'Shahid Uddin Chowdhury Anee' },
   { src: img3, caption: 'Israfil Khosru' },
   { src: img4, caption: 'Shahadat Hossain Mayor of Chittagong City Corporatio' },
@@ -30,8 +30,8 @@ const mediaImages = [
   { src: img7, caption: 'Dhaka University' },
   { src: img8, caption: 'Dhaka University' },
   { src: img9, caption: 'Story of Komol' },
-  { src: img10, caption: 'Featured Coverage' },
-  { src: img11, caption: 'Gayeshwar Chandra Roy & Sayeed Al Noman' },
+  { src: img10, caption: 'Gayeshwar Chandra Roy & Sayeed Al Noman' },
+  { src: img11, caption: 'Television Interview' },
   { src: img12, caption: 'Kingkor Ahsan' },
   { src: img13, caption: 'At the book fair' },
   { src: img14, caption: 'Komol Book Trailer at Star Cineplex' },
