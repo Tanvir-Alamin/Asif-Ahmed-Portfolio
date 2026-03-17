@@ -1,0 +1,75 @@
+import img1 from '../assets/media 1.jpg';
+import img2 from '../assets/media 2.jpg';
+import img3 from '../assets/media 3.jpg';
+import img4 from '../assets/media 4.jpg';
+import img5 from '../assets/media 5.jpg';
+import img6 from '../assets/media 6.jpeg';
+import img7 from '../assets/media 7.jpeg';
+import img8 from '../assets/media 8.jpeg';
+import img9 from '../assets/media 9.jpeg';
+import img10 from '../assets/media 10.jpeg';
+import img11 from '../assets/media 11.jpeg';
+import img12 from '../assets/media 12.jpg';
+import img13 from '../assets/media 13.jpg';
+import img14 from '../assets/media 14.jpeg';
+import img16 from '../assets/media 16.jpg';
+
+// Intentionally varied heights to create organic masonry rhythm
+const heightClasses = ['h-48', 'h-64', 'h-80', 'h-56', 'h-72', 'h-64', 'h-80', 'h-48', 'h-64', 'h-72', 'h-56', 'h-80', 'h-64', 'h-48', 'h-72'];
+
+const mediaImages = [
+  { src: img1,  caption: 'National News Coverage' },
+  { src: img2,  caption: 'Media Interview' },
+  { src: img3,  caption: 'International Briefing' },
+  { src: img4,  caption: 'Public Keynote' },
+  { src: img5,  caption: 'Television Appearance' },
+  { src: img6,  caption: 'Diplomatic Dialogue' },
+  { src: img7,  caption: 'Media Engagement' },
+  { src: img8,  caption: 'Panel Discussion' },
+  { src: img9,  caption: 'Press Conference' },
+  { src: img10, caption: 'Featured Coverage' },
+  { src: img11, caption: 'On Location' },
+  { src: img12, caption: 'Official Visit' },
+  { src: img13, caption: 'Cultural Program' },
+  { src: img14, caption: 'Broadcast Feature' },
+  { src: img16, caption: 'Media Presence' },
+];
+
+const MediaSnapshots = () => {
+  return (
+    <section id="media-snapshots" className="section-padding bg-white">
+      <div className="max-w-7xl mx-auto">
+        <p className="text-sm text-gray-400 uppercase tracking-widest mb-4 font-medium">Public Sphere</p>
+        <h2 className="section-heading mb-12">
+          Media & Public Appearances
+        </h2>
+
+        {/* CSS Columns masonry layout */}
+        <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-5 [column-fill:_balance]">
+          {mediaImages.map((item, i) => (
+            <div
+              key={i}
+              className={`break-inside-avoid mb-5 group relative overflow-hidden rounded-xl ${heightClasses[i % heightClasses.length]}`}
+            >
+              <img
+                src={item.src}
+                alt={item.caption}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              {/* Subtle caption on hover */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-end p-4">
+                <p className="text-white text-xs font-medium uppercase tracking-widest">
+                  {item.caption}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default MediaSnapshots;
+
