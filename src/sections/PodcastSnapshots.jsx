@@ -1,5 +1,6 @@
 import { useState, useCallback } from 'react';
 import { ExternalLink } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import img1 from '../assets/podcast 5.jpg';
 import img2 from '../assets/podcast 8.jpg';
 import img3 from '../assets/podcast.jpg';
@@ -86,7 +87,7 @@ const CreativePodcast = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mt-6">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mt-6">
               <a
                 href="https://www.youtube.com/@creativepodcastofficial"
                 target="_blank"
@@ -105,6 +106,13 @@ const CreativePodcast = () => {
                 Watch on Facebook
                 <ExternalLink size={14} />
               </a>
+              <Link
+                to="/sponsorship"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-black text-sm font-semibold rounded-full hover:bg-gray-200 transition-colors duration-300"
+              >
+                Sponsor
+                <ExternalLink size={14} />
+              </Link>
             </div>
           </div>
         </div>

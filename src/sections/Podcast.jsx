@@ -1,4 +1,5 @@
 import { ExternalLink, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Podcast = () => {
   const episodes = [
@@ -67,7 +68,7 @@ const Podcast = () => {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 text-center">
+        <div className="mt-12 text-center flex items-center justify-center gap-4 flex-wrap">
           <a
             href="https://www.facebook.com/CreativePodcastofficial"
             target="_blank"
@@ -77,6 +78,13 @@ const Podcast = () => {
             Follow on Facebook
             <ExternalLink size={14} className="ml-2 transition-transform duration-300 group-hover:-translate-y-0.5" />
           </a>
+          <Link
+            to="/sponsorship"
+            className="apple-button-filled group"
+          >
+            Sponsor
+            <ExternalLink size={14} className="ml-2 transition-transform duration-300 group-hover:-translate-y-0.5" />
+          </Link>
         </div>
       </div>
     </section>

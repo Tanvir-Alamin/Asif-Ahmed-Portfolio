@@ -8,6 +8,7 @@ import PodcastPage from './pages/PodcastPage';
 import MediaPage from './pages/MediaPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ContactPage from './pages/ContactPage';
+import SponsorshipPage from './pages/SponsorshipPage';
 import { ThemeProvider } from './context/ThemeContext';
 import './index.css';
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/articles" element={<ArticlesPage />} />
             <Route path="/media" element={<MediaPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/sponsorship" element={<SponsorshipPage />} />
           </Routes>
         </main>
         <Footer />
