@@ -2,12 +2,13 @@ import { useState, useEffect, useCallback } from 'react';
 import { Menu, Moon, Sun } from 'lucide-react';
 import MobileMenu from './MobileMenu';
 import { useTheme } from '../context/ThemeContext';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const navLinks = [
   { name: 'Home', sectionId: 'home' },
+  { name: 'Podcast', sectionId: 'podcast-snapshots' },
   { name: 'About', sectionId: 'about' },
   { name: 'Books', sectionId: 'books' },
-  { name: 'Podcast', sectionId: 'podcast-snapshots' },
   { name: 'Media', sectionId: 'media-snapshots' },
   { name: 'Articles', sectionId: 'articles' },
   { name: 'Contact', sectionId: 'contact' },
@@ -18,6 +19,8 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   // Detect scroll position
   useEffect(() => {
@@ -30,27 +33,38 @@ const Navbar = () => {
 
   // Track active section via IntersectionObserver
   useEffect(() => {
+    if (location.pathname !== '/') {
+      setActiveSection('');
+      return;
+    }
+
     const sectionIds = navLinks.map((l) => l.sectionId);
     const observers = [];
 
-    sectionIds.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    // Small delay to ensure DOM elements are rendered after navigation
+    const timeout = setTimeout(() => {
+      sectionIds.forEach((id) => {
+        const el = document.getElementById(id);
+        if (!el) return;
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) {
-            setActiveSection(id);
-          }
-        },
-        { rootMargin: '-40% 0px -55% 0px' }
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting) {
+              setActiveSection(id);
+            }
+          },
+          { rootMargin: '-40% 0px -55% 0px' }
+        );
+        observer.observe(el);
+        observers.push(observer);
+      });
+    }, 100);
 
-    return () => observers.forEach((o) => o.disconnect());
-  }, []);
+    return () => {
+      clearTimeout(timeout);
+      observers.forEach((o) => o.disconnect());
+    };
+  }, [location.pathname]);
 
   // Smooth scroll to section
   const scrollToSection = useCallback((sectionId) => {
@@ -63,8 +77,15 @@ const Navbar = () => {
   }, []);
 
   const handleNavClick = (e, sectionId) => {
-    e.preventDefault();
-    scrollToSection(sectionId);
+    if (e) e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      setTimeout(() => {
+        scrollToSection(sectionId);
+      }, 100);
+    } else {
+      scrollToSection(sectionId);
+    }
   };
 
   // Lock body scroll when mobile menu is open
@@ -154,7 +175,7 @@ const Navbar = () => {
         onClose={() => setIsMobileOpen(false)}
         navLinks={navLinks}
         activeSection={activeSection}
-        onNavigate={scrollToSection}
+        onNavigate={(id) => handleNavClick(null, id)}
       />
     </>
   );

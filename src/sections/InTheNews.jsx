@@ -143,8 +143,13 @@ const RegularCard = ({ source, title, excerpt, url }) => (
   </a>
 );
 
+import { useState } from 'react';
+
 // ─── Main section ─────────────────────────────────────────────────────────────
 const InTheNews = () => {
+  const [showAll, setShowAll] = useState(false);
+  const initialRegularCount = 3; // 3 featured + 3 regular = 6 total initially
+
   return (
     <section id="articles" className="section-padding bg-gray-50">
       <div className="max-w-7xl mx-auto">
@@ -172,10 +177,30 @@ const InTheNews = () => {
 
         {/* Regular grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {regularArticles.map((article, i) => (
+          {regularArticles.slice(0, showAll ? undefined : initialRegularCount).map((article, i) => (
             <RegularCard key={i} {...article} />
           ))}
         </div>
+
+        {regularArticles.length > initialRegularCount && (
+          <div className="mt-12 text-center flex flex-col items-center gap-4">
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="apple-button group"
+              >
+                See More News
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowAll(false)}
+                className="apple-button group"
+              >
+                See Less News
+              </button>
+            )}
+          </div>
+        )}
 
       </div>
     </section>

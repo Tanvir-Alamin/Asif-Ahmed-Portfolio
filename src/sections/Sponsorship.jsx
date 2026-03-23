@@ -1,9 +1,14 @@
-import { Mail, Phone, MessageCircle, MapPin } from 'lucide-react';
+import { Mail, Phone, MessageCircle, MapPin, ArrowLeft } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Sponsorship = () => {
   return (
     <section id="sponsorship" className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24">
+        <Link to="/" className="inline-flex items-center text-sm font-medium text-gray-500 hover:text-black mb-8 transition-colors">
+          <ArrowLeft size={16} className="mr-2" />
+          Back to Home
+        </Link>
         <p className="text-sm text-gray-400 uppercase tracking-widest mb-4 font-medium">Partnership</p>
         <h2 className="section-heading mb-4">Sponsor Creative Podcast</h2>
         <p className="section-subheading mb-16">

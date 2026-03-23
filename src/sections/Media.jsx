@@ -24,16 +24,18 @@ const getThumbnail = (url) => {
   return null; // Facebook or unknown = use placeholder
 };
 
+import { useState } from 'react';
+
 const Media = () => {
+  const [showAll, setShowAll] = useState(false);
   const mediaItems = [
     { title: '"কমল" এর লেখক আসিফ আহমদের সাথে আড্ডা', link: "https://youtu.be/rru6JTETDNE" },
     { title: "শহীদ রাষ্ট্রপতি জিয়াউর রহমানকে নিয়ে উপন্যাস সম্পর্কে", link: "https://youtu.be/VazAj3mBsTs" },
     { title: "সেনাশাসন স্বৈরতন্ত্রের দিকে গেলেও জিয়াউর রহমানের ব্যাপারটা ছিল সম্পূর্ণ ভিন্ন", link: "https://youtu.be/hG9RNjecG_Y?si=hm5agLNH8gJRVdz5" },
     { title: "শেখ মুজিবের মত করে জিয়াউর রহমানকেও কি একইভাবে পোট্রেট করা উচিত হবে?", link: "https://youtu.be/tOS3Zr7REjA?si=N6Cf74PirCGjwlMr" },
-    { title: "Podcast Conversation", link: "https://www.facebook.com/share/v/1GJNn6HBJj/" },
-    { title: "Public Talk", link: "https://www.facebook.com/share/v/1CgZAaUJJR/" },
-    { title: "Media Appearance", link: "https://www.facebook.com/share/v/18jKmBcn57/" },
-    { title: "Interview Clip", link: "https://www.facebook.com/share/v/1RxgJP4eX4/" },
+    { title: "কমল: জিয়াউর রহমানকে নিয়ে প্রথম উপন্যাস", link: "https://www.facebook.com/share/v/1GJNn6HBJj/" },
+    { title: "শহিদ রাষ্ট্রপতি জিয়াউর রহমানকে নিয়ে প্রথম উপন্যাস কমল নিয়ে আলাপচারিতায় কথাসাহিত্যিক ও কমল এর লেখক আসিফ আহমদের সাথে।", link: "https://www.facebook.com/share/v/18jKmBcn57/" },
+    { title: "শহিদ রাষ্ট্রপতি জিয়াউর রহমানকে নিয়ে বই লেখার কারণে আমাকে দলীয় ট্যাগ দেওয়া হবে! তারপরেও জিয়াউর রহমানের আদর্শ মানুষের মাঝে তুলে ধরতে চাই ,লেখক আসিফ আহমদ", link: "https://www.facebook.com/share/v/1RxgJP4eX4/" },
   ].map((item) => ({
     ...item,
     platform: getPlatform(item.link),
@@ -49,7 +51,7 @@ const Media = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {mediaItems.map((item, i) => (
+          {mediaItems.slice(0, showAll ? undefined : 3).map((item, i) => (
             <a
               key={i}
               href={item.link}
@@ -68,7 +70,7 @@ const Media = () => {
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
                     <svg className="w-10 h-10 text-white/30" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                     </svg>
                   </div>
                 )}
@@ -76,7 +78,7 @@ const Media = () => {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-14 h-14 rounded-full bg-black/40 backdrop-blur-sm border border-white/20 flex items-center justify-center transition-all duration-300 group-hover:bg-black/60 group-hover:scale-110">
                     <svg className="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M8 5v14l11-7z"/>
+                      <path d="M8 5v14l11-7z" />
                     </svg>
                   </div>
                 </div>
@@ -97,6 +99,26 @@ const Media = () => {
             </a>
           ))}
         </div>
+
+        {mediaItems.length > 3 && (
+          <div className="mt-12 text-center flex flex-col items-center gap-4">
+            {!showAll ? (
+              <button
+                onClick={() => setShowAll(true)}
+                className="apple-button group"
+              >
+                See More Videos
+              </button>
+            ) : (
+              <button
+                onClick={() => setShowAll(false)}
+                className="apple-button group"
+              >
+                See Less
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

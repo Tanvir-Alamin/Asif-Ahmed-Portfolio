@@ -9,6 +9,7 @@ import MediaPage from './pages/MediaPage';
 import ArticlesPage from './pages/ArticlesPage';
 import ContactPage from './pages/ContactPage';
 import SponsorshipPage from './pages/SponsorshipPage';
+import ScrollToTop from './components/ScrollToTop';
 import { ThemeProvider } from './context/ThemeContext';
 import './index.css';
 
@@ -31,6 +32,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
+        <ScrollToTop />
       </div>
     </Router>
     </ThemeProvider>

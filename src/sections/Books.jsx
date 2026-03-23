@@ -7,13 +7,15 @@ const Books = () => {
     image: komol,
     description: 'Centered on the life of Shaheed President Ziaur Rahman, this novel has sparked new discussions among readers, exploring history and identity with depth.',
     status: 'Available Now',
+    link: 'https://www.rokomari.com/book/442211/komol'
   }, {
     title: 'Zia in International Media',
     image: ZiaInInternational,
     titleBengali: 'আন্তর্জাতিক গণমাধ্যমে জিয়া',
     status: 'Latest Work',
     description: 'A serious analytical exploration of how Shaheed President Ziaur Rahman was portrayed in global media outlets, reflecting his international stature and impact.',
-    tag: 'Analytical Work'
+    tag: 'Analytical Work',
+    link: 'https://www.rokomari.com/book/536989/antarjatik-gonomaddhome-ziya'
   }]
 
   const upcomingBooks = [
@@ -56,10 +58,10 @@ const Books = () => {
             <p className="text-gray-600 font-light leading-relaxed text-base md:text-lg">
               {book.description}
             </p>
-            <button className="apple-button group">
-              Learn more
+            <a href={book.link} target="_blank" rel="noopener noreferrer" className="apple-button group inline-flex max-w-fit mt-4">
+              Buy on Rokomari
               <ArrowUpRight size={16} className="ml-2 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </button>
+            </a>
           </div>
         </div>)}
 

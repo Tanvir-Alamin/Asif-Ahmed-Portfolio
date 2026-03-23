@@ -12,8 +12,11 @@ const Footer = () => {
             <p className="text-xs text-gray-400">
               © {new Date().getFullYear()} Asif Ahmed. All rights reserved.
             </p>
-            <p className="text-xs text-gray-300 mt-1">
-              Developed by <span className="text-gray-500 font-medium">Tanvir</span>
+            <p className="text-xs text-gray-400 mt-2 flex items-center justify-center md:justify-end">
+              Developed by 
+              <a href="https://tanviralamin.netlify.app/" target="_blank" rel="noopener noreferrer" className="ml-1.5 px-2.5 py-1 bg-white text-black font-semibold rounded-md border border-gray-200 hover:border-gray-300 hover:shadow-sm hover:bg-gray-50 transition-all">
+                Tanvir
+              </a>
             </p>
           </div>
         </div>
